@@ -1,0 +1,20 @@
+$ORIGIN 2tm1-admin-sys2.ephec.austreelis.net.
+$TTL 1D
+@         IN  SOA  dns.2tm1-admin-sys2.ephec.austreelis.net.  postmaster.austreelis.net. (
+              0000000001  ; serial
+              21600       ; refresh after 6 hours
+              3600        ; retry after 1 hour
+              604800      ; expire after 1 week
+              86400 )     ; minimum TTL of 1 day
+;
+;
+          IN  NS     dns.2tm1-admin-sys2.ephec.austreelis.net.
+dns       IN  A      10.0.1.1
+          IN  AAAA   fc00:5566:bbc4:af43:2fa3:1580:e54e:dc7f
+@         IN  MX     30 mail.2tm1-admin-sys2.ephec.austreelis.net.
+mail      IN  A      10.0.1.5
+          IN  AAAA   fc00:fb49:d308:749d:7120:89e5:9421:148d
+ftp       IN  A      10.0.10.1
+          IN  AAAA   fc00:0cf2:591f:8c89:3b09:63eb:7031:9a12
+www       IN  A      10.0.10.2
+          IN  AAAA   fc00:fa66:f6a4:35ef:592b:93e4:c1ec:4a18
