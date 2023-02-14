@@ -28,7 +28,8 @@
       ];
 
       allFiles = lists.map import [
-        ./snippets/simple-resolver
+        ./snippets/resolver
+        ./snippets/client
       ];
 
       mkOutputs = system:
@@ -51,6 +52,7 @@
 
               { package = pkgs.podman; category = "containers"; }
               { package = pkgs.docker; category = "containers"; }
+              { package = pkgs.docker-compose; category = "containers"; }
 
               {
                 name = "deploy";

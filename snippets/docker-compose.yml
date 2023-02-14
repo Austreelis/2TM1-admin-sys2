@@ -1,0 +1,27 @@
+version: "3"
+name: 2tm1-admin-sys2-snippets
+services:
+  resolver:
+    image: resolver
+    links:
+      - client
+    networks:
+      resolver-nw:
+        ipv4_address: "10.0.10.3"
+    ports:
+      - 53:53/udp
+      - 53:53
+  client:
+    image: client
+    entrypoint: /bin/bash -i
+    stdin_open: true
+    tty: true
+    networks:
+      resolver-nw:
+        ipv4_address: "10.0.10.253"
+
+networks:
+  resolver-nw:
+    ipam:
+     config:
+       - subnet: 10.0.10.0/24
