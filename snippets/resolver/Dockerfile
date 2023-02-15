@@ -1,15 +1,12 @@
 FROM ubuntu/bind9
 
-# MAINTAINER instruction is deprecated
-LABEL maintainers="Austreelis <dev@austreelis.net>"
+MAINTAINER Habibou Moulaye Zeini <h.moulayezeini@students.ephec.be>
 
-# `named`'s log directory
-RUN mkdir /var/log/named && chown -R bind /var/log/named
+COPY named.conf /etc/bind
 
-# Copy this after the rest to avoid invalidating unmodified layers
-COPY named.conf /etc/bind/named.conf
-COPY *.zone /etc/bind/
+RUN mkdir /var/log/named && -R bind /var/log/named
 
-# Always start bind's resolver
-#ENTRYPOINT ["/usr/local/bin/named" "-g"]
+EXPOSE 53/tcp
+EXPOSE 53/udp
 
+CMD ["named", "-g"]
