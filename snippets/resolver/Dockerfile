@@ -1,6 +1,6 @@
 FROM ubuntu/bind9
 
-MAINTAINER Habibou Moulaye Zeini <h.moulayezeini@students.ephec.be>
+LABEL maintainers="Austreelis <dev@austreelis.net>, Habibou Moulaye Zeini <h.moulayezeini@students.ephec.be>"
 
 COPY named.conf /etc/bind
 
