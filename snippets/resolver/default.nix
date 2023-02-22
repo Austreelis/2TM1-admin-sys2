@@ -7,7 +7,7 @@ in
     system = "x86_64-linux";
     modules = [ (import ./configuration.nix args) ];
   };
- 
+
   deploy.nodes.simple-resolver = {
     hostname = "eadu.local.abeess.austreelis.net";
 
