@@ -4,5 +4,5 @@ FROM ubuntu:latest
 LABEL maintainers="Austreelis <dev@austreelis.net>"
 
 RUN apt update
-RUN apt install -y bind9-dnsutils iputils-ping
+RUN apt install -y bind9-dnsutils iputils-ping iproute2 curl
 
