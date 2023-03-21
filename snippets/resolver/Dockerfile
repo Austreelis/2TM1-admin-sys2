@@ -5,4 +5,4 @@ LABEL maintainers="Austreelis <dev@austreelis.net>, Habibou Moulaye Zeini <h.mou
 RUN mkdir /var/log/named && chown -R bind /var/log/named
 
 COPY named.conf /etc/bind
-COPY woodytoys.be /etc/bind
+COPY woodytoys.be.zone /etc/bind
