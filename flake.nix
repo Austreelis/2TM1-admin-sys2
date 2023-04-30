@@ -54,6 +54,8 @@
               { package = pkgs.docker; category = "containers"; }
               { package = pkgs.docker-compose; category = "containers"; }
 
+              { package = pkgs.mdbook; category = "docs"; }
+
               {
                 name = "deploy";
                 package = pkgs.deploy-rs.deploy-rs;
