@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Woodytoys Wiki</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Woodytoys documentation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="setting-up/index.html"><strong aria-hidden="true">1.</strong> Setting up</a></li><li class="chapter-item expanded "><a href="deployment/index.html"><strong aria-hidden="true">2.</strong> Deployment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="deployment/networking.html"><strong aria-hidden="true">2.1.</strong> Networking</a></li><li class="chapter-item expanded "><a href="deployment/intra/index.html"><strong aria-hidden="true">2.2.</strong> The intranet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="deployment/intra/www.html"><strong aria-hidden="true">2.2.1.</strong> Showroom website</a></li><li class="chapter-item expanded "><a href="deployment/intra/b2b.html"><strong aria-hidden="true">2.2.2.</strong> B2B website</a></li><li class="chapter-item expanded "><a href="deployment/intra/erp.html"><strong aria-hidden="true">2.2.3.</strong> Administration website</a></li><li class="chapter-item expanded "><a href="deployment/intra/dns.html"><strong aria-hidden="true">2.2.4.</strong> DNS server</a></li><li class="chapter-item expanded "><a href="deployment/intra/db.html"><strong aria-hidden="true">2.2.5.</strong> Database</a></li><li class="chapter-item expanded "><a href="deployment/intra/mail.html"><strong aria-hidden="true">2.2.6.</strong> Mail server</a></li></ol></li><li class="chapter-item expanded "><a href="deployment/portainer.html"><strong aria-hidden="true">2.3.</strong> Portainer</a></li><li class="chapter-item expanded "><a href="deployment/swarm.html"><strong aria-hidden="true">2.4.</strong> Docker Swarm</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Woodytoys Wiki</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/austreelis//2tm1-admin-sys2" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<blockquote>
+<p>This project was created for a second-year system administration course at
+<a href="ephec.be">Ephec</a>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Group</th><th>Students</th></tr></thead><tbody>
+<tr><td>2TM1-04</td><td>Habibou Moulaye, Morgane Leclerc, Nicolas ???</td></tr>
+</tbody></table>
+</div>
+<p>The scope of the project was the simulation of the administration of a
+company network infrastructure, at a high level, within a set of docker
+containers. This wiki reflects this, in that nothing beyond what was actually
+set up within the docker bubble is documented.</p>
+</blockquote>
+<p>This wiki is the documentation written for the team of <strong>Woodytoys</strong>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up"><a class="header" href="#setting-up">Setting up</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="deployment"><a class="header" href="#deployment">Deployment</a></h1>
+<p>This section walks you through the deployment process of woodytoys' stack.</p>
+<h2 id="prerequities"><a class="header" href="#prerequities">Prerequities</a></h2>
+<h3 id="general-setup"><a class="header" href="#general-setup">General setup</a></h3>
+<p>You should have the basic tools installed and the repository cloned on the
+deployed host, as outlined in the <a href="deployment/../setting-up/README.html">Setting up</a>
+section.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="networking"><a class="header" href="#networking">Networking</a></h1>
+<blockquote>
+<p>Note: All these steps may be done in Portainer, but you may encounter some
+issues (especially with swarm) reserving the expected address spaces.</p>
+</blockquote>
+<h2 id="layer-3-ipvlan"><a class="header" href="#layer-3-ipvlan">Layer-3 IPVLAN</a></h2>
+<p>The containers communicate through a layer-3 ipvlan docker network. However
+Portainer cannot create it when creating a stack from a compose file.</p>
+<p>The compose files in <code>woodytoys/stacks</code> assume a network named
+<code>woodytoys-&lt;stack&gt;-l3ipvlan</code> is created beforehand, with a series of subnets.</p>
+<p>For instance, the <code>intra</code> and <code>client</code> stacks expect <code>woodytoys-intra-l3ipvlan</code>
+to be created using this command:</p>
+<pre><code class="language-bash">docker network create \
+  -d ipvlan \
+  -o parent=&lt;outer-interface&gt; \
+  -o ipvlan_mode=l3 \
+  --subnet 10.0.0.0/24 \
+  --subnet 10.0.1.0/24 \
+  --subnet 10.0.2.0/24 \
+  --subnet 10.0.3.0/24 \
+  --subnet 10.0.4.0/24 \
+  --subnet 10.0.5.0/24 \
+  --subnet 10.0.6.0/24 \
+  --subnet 10.0.7.0/24 \
+  woodytoys-intra-l3ipvlan
+</code></pre>
+<blockquote>
+<p>A script to correctly setup l3-ipvlan networks is available at
+<code>woodytoys/setup-vlans.sh</code>.</p>
+</blockquote>
+<blockquote>
+<p>Note: if using Docker Swarm, you will need to override the default scope
+(<code>local</code>) with <code>--scope swarm</code>.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-intranet"><a class="header" href="#the-intranet">The intranet</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="showroom-website"><a class="header" href="#showroom-website">Showroom website</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="b2b-website"><a class="header" href="#b2b-website">B2B website</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="administration-website"><a class="header" href="#administration-website">Administration website</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dns-server"><a class="header" href="#dns-server">DNS server</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="database"><a class="header" href="#database">Database</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mail-server"><a class="header" href="#mail-server">Mail server</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="portainer"><a class="header" href="#portainer">Portainer</a></h1>
+<p>This project uses Portainer to manage anything Docker-related. It doesn't
+remove the ability to manage Docker solely from the command line or by editing
+the compose files, but rather offers a graphical interface on top of the Docker
+Daemon.</p>
+<h2 id="installing-the-portainer-server"><a class="header" href="#installing-the-portainer-server">Installing the Portainer server.</a></h2>
+<p>On the host, simply run:</p>
+<pre><code class="language-bash">docker-compose --project-directory woodytoys -p portainer up -d
+</code></pre>
+<p>Then connect to the host on port <code>50001</code>. You should see Portainer's first
+launch page, which asks for the creation of an account.</p>
+<blockquote>
+<p>This documentation will assume the user and its password are <code>woodytoys</code> &amp;
+<code>five-nights-at-freddies</code>, but you can and should choose better credentials
+🙂.</p>
+</blockquote>
+<p>Once logged in, you should land on the home page. You should not need to add an
+environment for now, so click &quot;get started&quot;. Then choose the <code>local</code>
+environment, that is the Docker daemon Portainer is running on.</p>
+<p>You should then be able to see the created stacks: there should only be one,
+called &quot;portainer&quot;, with &quot;limited&quot; control. This is representing the compose
+file declaring the service running for the Portainer server.</p>
+<p>Other woodytoys services will be in their own stacks.</p>
+<p>If you didn't create layer-3 vlans before, you may now through Portainer's
+interface.</p>
+<h2 id="portainers-container-config"><a class="header" href="#portainers-container-config">Portainer's container config</a></h2>
+<blockquote>
+<p>TODO: Explain networks and volumes of the compose file</p>
+</blockquote>
+<h2 id="portainers-env-and-stack-setups"><a class="header" href="#portainers-env-and-stack-setups">Portainer's env and stack setups</a></h2>
+<blockquote>
+<p>TODO: Explain how we assume stacks and environments are setup</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-swarm"><a class="header" href="#docker-swarm">Docker Swarm</a></h1>
+<p>Although it wasn't extensively tested, deploying with Docker Swarm should be
+straightforward.</p>
+<h3 id="why-use-swarm-"><a class="header" href="#why-use-swarm-">Why use Swarm ?</a></h3>
+<p>The benefits of deploying using Docker Swarm mainly are the following:</p>
+<h4 id="using-the-portainer-agent"><a class="header" href="#using-the-portainer-agent">Using the Portainer Agent</a></h4>
+<p>A Portainer Agent installed on the host allows managing several hosts from a
+single Portainer server. Even without Swarm, it would be the easiest solution
+to manage two separate hosts running Woodytoys' containers (instead of having
+two different Portainer servers).</p>
+<p>The &quot;default&quot; setup outlined in this documentation runs a Portainer server
+on the host, alongside all other containers. It directly talks to the host's
+Docker daemon. While it's possible to use the Portainer Agent with this setup
+already, we did not set this up. However, it's considered bad practice not to
+when using Swarm (and practically a lot harder to manage).</p>
+<p>So while the Portainer Agent could come useful without Swarm, it's not really
+worth the work to setup just yet, but could bring more value than just enabling
+Swarm.</p>
+<h4 id="better-scalability"><a class="header" href="#better-scalability">Better scalability</a></h4>
+<p>Swarm allows to easily replicate services and run them accross several
+hosts (nodes, in Swarm jargon). While this needs some more work than what's
+currently setup, it should only require some adjustment to the routing and
+DNS infrastructure.</p>
+<h3 id="deploying-with-docker-swarm"><a class="header" href="#deploying-with-docker-swarm">Deploying with Docker Swarm</a></h3>
+<p>To deploy Woodytoys' stack with Swarm, you should first choose a host, or node,
+that will act as a &quot;manager&quot; for the swarm. All nodes may be manager, but you
+may want some nodes to only be able to run services without managing others.</p>
+<blockquote>
+<p>For instance, with enough nodes, it's common to have some dedicated to
+&quot;public-facing&quot; services so that comprimising one of them doesn't necessarily
+gives managing rights on the Swarm.</p>
+</blockquote>
+<p>On the &quot;initial&quot; manager node, create a new swarm. You may want to look at the
+options first:</p>
+<pre><code class="language-bash">docker swarm init --help
+# Then actually create one, adding options you see fit
+docker swarm init --advertise-addr ens33 --listen-addr ens33
+</code></pre>
+<p>Then run the portainer agent:</p>
+<pre><code class="language-bash">docker run -d \
+  -p 9001:9001 \
+  --restart always \
+  --name portainer_agent \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+  portainer/agent:latest
+</code></pre>
+<p>Before continuing to setup Portainer in the next section. You may run the
+server on this host, or any other, as long as it can reach its port <code>9001</code>.</p>
+<p>See also <a href="https://docs.portainer.io/admin/environments/add/docker/agent">Portainer's</a> and <a href="https://docs.docker.com/engine/swarm/">Docker's</a>
+documentation.</p>
+<h3 id="adding-a-node-to-the-swarm"><a class="header" href="#adding-a-node-to-the-swarm">Adding a node to the Swarm</a></h3>
+<p>To add a node, you will need to generate a &quot;worker&quot; or &quot;manager&quot; token
+(depending on which kind of node you want to add), from any existing manager
+node:</p>
+<pre><code class="language-bash">docker swarm join-token worker
+# Or manager instead of worker
+</code></pre>
+<p>Copy or transfer the token somehow, then on the new node:</p>
+<pre><code class="language-bash">docker swarm join --token &lt;the-token-from-previous-step&gt; &lt;manager-ip&gt;:&lt;port&gt;
+</code></pre>
+<p>Finally, run the portainer agent:</p>
+<pre><code class="language-bash">docker run -d \
+  -p 9001:9001 \
+  --restart always \
+  --name portainer_agent \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+  portainer/agent:latest
+</code></pre>
+<p>You should be able to deploy services to this node from your Portainer server.</p>
+<p>See also <a href="https://docs.portainer.io/admin/environments/add/docker/agent">Portainer's</a> and <a href="https://docs.docker.com/engine/swarm/">Docker's</a>
+documentation.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
