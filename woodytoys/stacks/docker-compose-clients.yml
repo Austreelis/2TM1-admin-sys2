@@ -1,0 +1,93 @@
+version: "3.2"
+
+networks:
+  woodytoys-intra-l3ipvlan:
+    external: true
+    driver: ipvlan
+    driver_opts:
+      ipvlan_mode: l3
+      parent: wlan0
+    ipam:
+      config:
+        - subnet: 10.0.1.0/24
+        - subnet: 10.0.2.0/24
+        - subnet: 10.0.3.0/24
+        - subnet: 10.0.4.0/24
+        - subnet: 10.0.5.0/24
+        - subnet: 10.0.6.0/24
+        - subnet: 10.0.7.0/24
+        - subnet: 10.0.8.0/24
+
+services:
+  hangar:
+    build: /var/lib/woodytoys/images/client
+    image: woodytoys/client
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.1.2
+
+  production:
+    build: /var/lib/woodytoys/images/client
+    image: woodytoys/client
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.2.2
+
+  accounting:
+    build: /var/lib/woodytoys/images/client
+    image: woodytoys/client
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.3.2
+
+  marketing:
+    build: /var/lib/woodytoys/images/client
+    image: woodytoys/client
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.4.2
+
+  secretariat:
+    build: /var/lib/woodytoys/images/client
+    image: woodytoys/client
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.5.2
+  
+  management:
+    build: /var/lib/woodytoys/images/client
+    image: woodytoys/client
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.6.2
+

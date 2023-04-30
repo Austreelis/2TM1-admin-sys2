@@ -1,0 +1,80 @@
+version: "3.2"
+
+networks:
+  ipvlan-l3:
+    driver: ipvlan
+    driver_opts:
+      parent: ens33
+      ipvlan_mode: l3
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+        - subnet: 10.0.1.0/24
+        - subnet: 10.0.2.0/24
+        - subnet: 10.0.3.0/24
+        - subnet: 10.0.4.0/24
+        - subnet: 10.0.5.0/24
+        - subnet: 10.0.6.0/24
+        - subnet: 10.0.7.0/24
+
+services:
+  hangar:
+    build: ../images/client
+    image: client
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      ipvlan-l3:
+        ipv4_address: 10.0.1.2
+
+  production:
+    build: ../images/client
+    image: client
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      ipvlan-l3:
+        ipv4_address: 10.0.2.2
+
+  accounting:
+    build: ../images/client
+    image: client
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      ipvlan-l3:
+        ipv4_address: 10.0.3.2
+
+  marketing:
+    build: ../images/client
+    image: client
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      ipvlan-l3:
+        ipv4_address: 10.0.4.2
+
+  secretariat:
+    build: ../images/client
+    image: client
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      ipvlan-l3:
+        ipv4_address: 10.0.5.2
+  
+  management:
+    build: ../images/client
+    image: client
+    restart: unless-stopped
+    dns:
+      - 10.0.0.2
+    networks:
+      ipvlan-l3:
+        ipv4_address: 10.0.6.2
+

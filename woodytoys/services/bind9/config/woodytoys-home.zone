@@ -1,0 +1,19 @@
+$TTL 2d
+$ORIGIN woodytoys.home.
+
+@       IN      SOA     ns.woodytoys.home.      karichikarichikarichi.gmail.com (
+                        210323  ; serial
+                        12h     ; refresh
+                        15m     ; retry
+                        3w      ; expire
+                        2h      ; minimum ttl
+                        )
+
+        IN      NS      ns.woodytoys.home.
+
+ns      IN      A       10.10.10.10
+
+
+www     IN      A       10.0.0.3
+b2b	IN	A	10.0.0.4
+erp     IN      A       10.0.0.5

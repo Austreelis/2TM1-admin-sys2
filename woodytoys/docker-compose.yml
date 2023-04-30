@@ -1,0 +1,18 @@
+version: "3.2"
+
+volumes:
+  portainer-data:
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "50000:8000"
+      - "50001:9443"
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+      - ./services:/var/lib/woodytoys/services
+      - ./images:/var/lib/woodytoys/images
