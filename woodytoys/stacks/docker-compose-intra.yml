@@ -89,3 +89,11 @@ services:
     volumes:
       - /var/lib/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
 
+  wiki:
+    build: /var/lib/woodytoys/images/mdbook
+    image: woodytoys/mdbook
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.1.7
+    restart: unless-stopped
+

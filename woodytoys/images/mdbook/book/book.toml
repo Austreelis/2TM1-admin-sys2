@@ -6,11 +6,10 @@ authors = [
   "Nicolas ???",
 ]
 description = "Woodytoys documentation"
-src = "docs"
 language = "en"
 
 [build]
-build-dir = "docs-build"
+build-dir = "build"
 create-missing = true
 
 [output.html]
