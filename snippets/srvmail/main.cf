@@ -1,6 +1,6 @@
 # Define server identity
-myhostname = mail.woodytoys.be
-mydomain = woodytoys.be
+myhostname = mail.m1-4.ephec-ti.be
+mydomain = m1-4.ephec-ti.be
 
 # Outgoing mail must use this as source address domain
 myorigin = $mydomain
@@ -10,10 +10,11 @@ mydestination = $myhostname localhost.$mydomain localhost $mydomain
 smtpd_banner = $myhostname ESMTP $mail_name
 
 # Network from which we accept smtp connexions
-mynetworks = 192.168.0.0/16 10.0.0.0/16 127.0.0.0/8 [::1]/128
-smtpd_relay_restrictions = permit_mynetworks, reject
+mynetworks_style = subnet
+relay_domains = $mydestination
+relayhost =    
 
 #Log configuration
 maillog_file=/var/log/postfix.log
-#debug_peer_list = woodytoys.lab
+#debug_peer_list = m1-4.ephec-ti.be
 #debug_peer_level = 5
