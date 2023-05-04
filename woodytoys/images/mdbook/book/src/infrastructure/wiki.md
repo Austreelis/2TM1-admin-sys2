@@ -8,7 +8,7 @@ open-source static site generator from Markdown by the
 
 This wiki is rebuilt and deployed on each push to the `main` branch of the
 github repository. It can be read on github pages
-[here](https://austreelis.github.io/2t-admin-sys2).
+[here](https://austreelis.github.io/2tm1-admin-sys2).
 
 It is also deployed on woodytoys' intranet, through the
 [documentation website service](../deployment/intra/wiki.md), and is accessible
