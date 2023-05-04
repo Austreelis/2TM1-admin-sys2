@@ -91,7 +91,7 @@ services:
       interval: 1m
       timeout: 10s
     networks:
-      l3ipvlan:
+      woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.1.6
     volumes:
       - mysql:/var/lib/mysql
