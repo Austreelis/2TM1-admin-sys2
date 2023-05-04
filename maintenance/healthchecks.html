@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Troobleshooting - Woodytoys Wiki</title>
+        <title>Health checks - Woodytoys Wiki</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../setting-up/index.html"><strong aria-hidden="true">1.</strong> Setting up</a></li><li class="chapter-item expanded "><a href="../analysis/index.html"><strong aria-hidden="true">2.</strong> Analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../analysis/cloud.html"><strong aria-hidden="true">2.1.</strong> Cloud</a></li><li class="chapter-item expanded "><a href="../analysis/dns.html"><strong aria-hidden="true">2.2.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../analysis/web.html"><strong aria-hidden="true">2.3.</strong> Web</a></li><li class="chapter-item expanded "><a href="../analysis/mail.html"><strong aria-hidden="true">2.4.</strong> Mail</a></li></ol></li><li class="chapter-item expanded "><a href="../infrastructure/index.html"><strong aria-hidden="true">3.</strong> Infrastructure and data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../infrastructure/wiki.html"><strong aria-hidden="true">3.1.</strong> This wiki</a></li><li class="chapter-item expanded "><a href="../infrastructure/git.html"><strong aria-hidden="true">3.2.</strong> The git repository</a></li><li class="chapter-item expanded "><a href="../infrastructure/ci.html"><strong aria-hidden="true">3.3.</strong> Continous Integration</a></li></ol></li><li class="chapter-item expanded "><a href="../deployment/index.html"><strong aria-hidden="true">4.</strong> Deployment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployment/networking.html"><strong aria-hidden="true">4.1.</strong> Networking</a></li><li class="chapter-item expanded "><a href="../deployment/portainer.html"><strong aria-hidden="true">4.2.</strong> Portainer</a></li><li class="chapter-item expanded "><a href="../deployment/intra/index.html"><strong aria-hidden="true">4.3.</strong> The intranet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployment/intra/www.html"><strong aria-hidden="true">4.3.1.</strong> Showroom website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/b2b.html"><strong aria-hidden="true">4.3.2.</strong> B2B website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/erp.html"><strong aria-hidden="true">4.3.3.</strong> Administration website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/wiki.html"><strong aria-hidden="true">4.3.4.</strong> Wiki website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/dns.html"><strong aria-hidden="true">4.3.5.</strong> DNS server</a></li><li class="chapter-item expanded "><a href="../deployment/intra/db.html"><strong aria-hidden="true">4.3.6.</strong> Database</a></li><li class="chapter-item expanded "><a href="../deployment/intra/mail.html"><strong aria-hidden="true">4.3.7.</strong> Mail server</a></li><li class="chapter-item expanded "><a href="../deployment/intra/wiki.html"><strong aria-hidden="true">4.3.8.</strong> Documentation website</a></li></ol></li><li class="chapter-item expanded "><a href="../deployment/swarm.html"><strong aria-hidden="true">4.4.</strong> Docker Swarm</a></li></ol></li><li class="chapter-item expanded "><a href="../maintenace/index.html"><strong aria-hidden="true">5.</strong> Maintenance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../maintenance/healthchecks.html"><strong aria-hidden="true">5.1.</strong> Health checks</a></li><li class="chapter-item expanded "><a href="../maintenance/users.html"><strong aria-hidden="true">5.2.</strong> Managing users</a></li><li class="chapter-item expanded "><a href="../maintenance/service-update.html"><strong aria-hidden="true">5.3.</strong> Updating services</a></li><li class="chapter-item expanded "><a href="../maintenance/system-update.html"><strong aria-hidden="true">5.4.</strong> Updating the system</a></li><li class="chapter-item expanded "><a href="../maintenance/troobleshootin.html" class="active"><strong aria-hidden="true">5.5.</strong> Troobleshooting</a></li></ol></li><li class="chapter-item expanded "><a href="../TODOS.html"><strong aria-hidden="true">6.</strong> TODOS.md</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../setting-up/index.html"><strong aria-hidden="true">1.</strong> Setting up</a></li><li class="chapter-item expanded "><a href="../analysis/index.html"><strong aria-hidden="true">2.</strong> Analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../analysis/cloud.html"><strong aria-hidden="true">2.1.</strong> Cloud</a></li><li class="chapter-item expanded "><a href="../analysis/dns.html"><strong aria-hidden="true">2.2.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../analysis/web.html"><strong aria-hidden="true">2.3.</strong> Web</a></li><li class="chapter-item expanded "><a href="../analysis/mail.html"><strong aria-hidden="true">2.4.</strong> Mail</a></li></ol></li><li class="chapter-item expanded "><a href="../infrastructure/index.html"><strong aria-hidden="true">3.</strong> Infrastructure and data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../infrastructure/wiki.html"><strong aria-hidden="true">3.1.</strong> This wiki</a></li><li class="chapter-item expanded "><a href="../infrastructure/git.html"><strong aria-hidden="true">3.2.</strong> The git repository</a></li><li class="chapter-item expanded "><a href="../infrastructure/ci.html"><strong aria-hidden="true">3.3.</strong> Continous Integration</a></li></ol></li><li class="chapter-item expanded "><a href="../deployment/index.html"><strong aria-hidden="true">4.</strong> Deployment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployment/networking.html"><strong aria-hidden="true">4.1.</strong> Networking</a></li><li class="chapter-item expanded "><a href="../deployment/portainer.html"><strong aria-hidden="true">4.2.</strong> Portainer</a></li><li class="chapter-item expanded "><a href="../deployment/intra/index.html"><strong aria-hidden="true">4.3.</strong> The intranet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployment/intra/www.html"><strong aria-hidden="true">4.3.1.</strong> Showroom website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/b2b.html"><strong aria-hidden="true">4.3.2.</strong> B2B website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/erp.html"><strong aria-hidden="true">4.3.3.</strong> Administration website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/wiki.html"><strong aria-hidden="true">4.3.4.</strong> Wiki website</a></li><li class="chapter-item expanded "><a href="../deployment/intra/dns.html"><strong aria-hidden="true">4.3.5.</strong> DNS server</a></li><li class="chapter-item expanded "><a href="../deployment/intra/db.html"><strong aria-hidden="true">4.3.6.</strong> Database</a></li><li class="chapter-item expanded "><a href="../deployment/intra/mail.html"><strong aria-hidden="true">4.3.7.</strong> Mail server</a></li><li class="chapter-item expanded "><a href="../deployment/intra/wiki.html"><strong aria-hidden="true">4.3.8.</strong> Documentation website</a></li></ol></li><li class="chapter-item expanded "><a href="../deployment/swarm.html"><strong aria-hidden="true">4.4.</strong> Docker Swarm</a></li></ol></li><li class="chapter-item expanded "><a href="../maintenace/index.html"><strong aria-hidden="true">5.</strong> Maintenance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../maintenance/healthchecks.html" class="active"><strong aria-hidden="true">5.1.</strong> Health checks</a></li><li class="chapter-item expanded "><a href="../maintenance/users.html"><strong aria-hidden="true">5.2.</strong> Managing users</a></li><li class="chapter-item expanded "><a href="../maintenance/service-update.html"><strong aria-hidden="true">5.3.</strong> Updating services</a></li><li class="chapter-item expanded "><a href="../maintenance/system-update.html"><strong aria-hidden="true">5.4.</strong> Updating the system</a></li><li class="chapter-item expanded "><a href="../maintenance/troobleshootin.html"><strong aria-hidden="true">5.5.</strong> Troobleshooting</a></li></ol></li><li class="chapter-item expanded "><a href="../TODOS.html"><strong aria-hidden="true">6.</strong> TODOS.md</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -123,7 +123,7 @@
                         <a href="https://github.com/austreelis//2tm1-admin-sys2" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/austreelis/2tm1-admin-sys2/edit/main/woodytoys/images/mdbook/book/src/maintenance/troobleshootin.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/austreelis/2tm1-admin-sys2/edit/main/woodytoys/images/mdbook/book/src/maintenance/healthchecks.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -152,17 +152,43 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="troobleshooting"><a class="header" href="#troobleshooting">Troobleshooting</a></h1>
+                        <h1 id="service-health-checks"><a class="header" href="#service-health-checks">Service health checks</a></h1>
+<p>Most of the service are monitored on a coarse level through
+<a href="https://docs.docker.com/engine/reference/builder/#healthcheck">Docker healthchecks</a>.</p>
+<h2 id="interpreting-health-status"><a class="header" href="#interpreting-health-status">Interpreting health status</a></h2>
+<p>Upon starting, a container is in the <code>starting</code> state. This means no
+healthcheck has been successful yet, but it's still early enough that those
+failures do not count toward the maximum amount of failure.</p>
+<p>Whenever a healtcheck succeeds, a container becomes <code>healty</code>.</p>
+<p>If more than a given maximum of healtcheck retries fail, the container becomes
+<code>unhealthy</code>.</p>
+<h2 id="how-to-write-healthchecks"><a class="header" href="#how-to-write-healthchecks">How to write healthchecks</a></h2>
+<p>Healthchecks are scripts or command that exit with code either <code>0</code> or <code>1</code>
+(no other exit code should be used !), and are run in the container's shell.</p>
+<p>This means the container's image needs to include all the dependencies needed
+to execute the healthcheck, and it must have a shell ! (For instance, the
+portainer image we use doesn't).</p>
+<p>Alternatively, it may directly execute an executable, but that's often
+impractical.</p>
+<blockquote>
+<p><strong>Tip:</strong>: an easy way with bash to make any failing command eit with code 1
+instead of any non-zero code is <code>command that fails || exit 1</code>.</p>
+</blockquote>
+<p>Ideally, healthchecks should not rely on any other service to be running,
+except when service have explicit dependencies (which should be indicated in
+the compose file).</p>
+<p>Most services use a timeout of 10s, meaning healthchecks running longer than
+that will be considered failed even if they succeed later.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../maintenance/system-update.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../maintenace/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../TODOS.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../maintenance/users.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -172,11 +198,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../maintenance/system-update.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../maintenace/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../TODOS.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../maintenance/users.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
