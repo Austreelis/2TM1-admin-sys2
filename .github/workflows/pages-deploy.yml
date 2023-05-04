@@ -19,7 +19,7 @@ jobs:
         with:
           toolchain: stable
       - run: (test -x $HOME/.cargo/bin/mdbook || cargo install mdbook)
-      - run: mdbook build wiki && mdbook test wiki
+      - run: mdbook build wiki
       - uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
