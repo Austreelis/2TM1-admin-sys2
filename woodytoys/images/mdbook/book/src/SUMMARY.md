@@ -23,6 +23,7 @@
     - [DNS server](deployment/intra/dns.md)
     - [Database](deployment/intra/db.md)
     - [Mail server](deployment/intra/mail.md)
+    - [Documentation website](deployment/intra/wiki.md)
   - [Docker Swarm](deployment/swarm.md)
 - [Maintenance](maintenace/README.md)
   - [Health checks](maintenance/healthchecks.md)
