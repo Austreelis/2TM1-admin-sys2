@@ -26,6 +26,11 @@ RUN mdbook build book -d build
 ################################################################################
 FROM httpd:latest AS mdbook
 
+# httpd is based on debian-slim
+RUN set -eux; \
+  apt update; \
+  apt install -y --no-install-recommends curl
+
 # Copy build from builder
 COPY --from=builder /root/book/build /usr/local/apache2/htdocs
 

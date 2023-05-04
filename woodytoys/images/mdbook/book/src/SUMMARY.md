@@ -25,6 +25,7 @@
     - [Mail server](deployment/intra/mail.md)
   - [Docker Swarm](deployment/swarm.md)
 - [Maintenance](maintenace/README.md)
+  - [Health checks](maintenance/healthchecks.md)
   - [Managing users](maintenance/users.md)
   - [Updating services](maintenance/service-update.md)
   - [Updating the system](maintenance/system-update.md)
