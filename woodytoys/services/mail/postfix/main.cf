@@ -1,0 +1,19 @@
+# Define server identity
+myhostname = mail.woodytoys.home
+mydomain = woodytoys.home
+
+# Outgoing mail must use this as source address domain
+myorigin = $mydomain
+# Accepting local mail delivery for those destinations
+mydestination = $myhostname localhost.$mydomain localhost $mydomain
+
+smtpd_banner = $myhostname ESMTP $mail_name
+
+# Network from which we accept smtp connexions
+mynetworks = 10.0.0.0/16 127.0.0.0/8 [::1]/128
+smtpd_relay_restrictions = permit_mynetworks, reject
+
+#Log configuration
+maillog_file=/var/log/postfix.log
+#debug_peer_list = woodytoys.home
+#debug_peer_level = 5

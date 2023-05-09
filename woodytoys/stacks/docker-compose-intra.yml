@@ -97,3 +97,28 @@ services:
         ipv4_address: 10.0.1.7
     restart: unless-stopped
 
+  postfix:
+    build: /var/lib/woodytoys/images/mail/postfix
+    image: woodytoys/mail
+    ports:
+        - 25:25
+        - 587:587
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.1.8
+    restart: unless-stopped
+    volumes:
+      - /var/lib/woodytoys/services/mail/postfix/main.cf:/etc/postfix/main.cf
+
+  dovecot:
+    build: /var/lib/woodytoys/images/mail/dovecot
+    image: woodytoys/dovecot
+    ports:
+        - 143:143
+        - 993:993
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.1.9
+    restart: unless-stopped
+    volumes:
+      - /var/lib/woodytoys/services/mail/dovecot/dovecot.conf:/etc/dovecot/dovecot.conf
