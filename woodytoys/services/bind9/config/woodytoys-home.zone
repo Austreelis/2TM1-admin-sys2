@@ -9,11 +9,14 @@ $ORIGIN woodytoys.home.
                         2h      ; minimum ttl
                         )
 
-        IN      NS      ns.woodytoys.home.
+@        IN      NS      ns.woodytoys.home.
+@        IN      MX  10  mail.woodytoys.home.
 
-ns      IN      A       10.10.10.10
+ns      IN      A       10.0.1.2
 
 
-www     IN      A       10.0.0.3
-b2b	IN	A	10.0.0.4
-erp     IN      A       10.0.0.5
+www     IN      A       10.0.1.3
+b2b	IN	A	10.0.1.4
+erp     IN      A       10.0.1.5
+wiki    IN      A       10.0.1.7
+mail    IN      A       10.0.1.8

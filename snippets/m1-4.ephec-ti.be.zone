@@ -1,0 +1,17 @@
+$TTL 2d
+$ORIGIN m1-4.ephec-ti.be.
+
+@       IN      SOA     ns.m1-4.ephec-ti.be.      karichikarichikarichi.gmail.com (
+                        210323  ; serial
+                        12h     ; refresh
+                        15m     ; retry
+                        3w      ; expire
+                        2h      ; minimum ttl
+                        )
+
+        IN      NS      ns.m1-4.ephec-ti.be.
+	IN	MX	mail.m1-4.ephec-ti.be.
+
+ns      IN      A       192.168.0.1
+mail	IN	A	192.168.0.2
+www	IN	A	192.168.0.3
