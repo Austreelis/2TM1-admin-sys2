@@ -115,7 +115,7 @@ services:
       - /home/user/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
 
   wiki:
-    build: /var/lib/woodytoys/images/mdbook
+    build: /home/user/git/woodytoys/images/mdbook
     image: woodytoys/mdbook
     healthcheck:
       test: curl -f --fail-early http://localhost:80 || exit 1
