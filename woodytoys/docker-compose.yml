@@ -15,5 +15,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer-data:/data
-      - ./services:/var/lib/woodytoys/services
-      - ./images:/var/lib/woodytoys/images
+#       - ./services:/var/lib/woodytoys/services
+#       - ./images:/var/lib/woodytoys/images
