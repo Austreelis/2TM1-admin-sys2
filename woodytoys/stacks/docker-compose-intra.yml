@@ -39,7 +39,7 @@ services:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.1.4
     volumes:
-      -/home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
+      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
 
   bind9:
     image: ubuntu/bind9:9.18-22.04_beta
