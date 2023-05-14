@@ -116,7 +116,9 @@ services:
     image: mysql
     restart: unless-stopped
     volumes:
-      - mysql:/var/lib/mysql
+      - /home/user/git/woodytoys/services/mysql:/var/lib/mysql
+
+      # - mysql:/var/lib/mysql
     environment:
         MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
         MYSQL_DATABASE: MYSQL_DATABASE
