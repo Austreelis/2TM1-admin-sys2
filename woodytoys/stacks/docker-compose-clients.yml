@@ -76,6 +76,7 @@ services:
 networks:
   woodytoys-intra-l3ipvlan:
     # external: true
+    name: woodytoys-intra-l3ipvlan
     driver: ipvlan
     driver_opts:
       ipvlan_mode: l3
