@@ -40,7 +40,6 @@ services:
 #     image: php-apache
     build:
       context: /home/user/git/woodytoys/images/php-apache
-      dockerfile: Dockerfile
     ports:
       - 8000:80
     depends_on:
@@ -61,7 +60,6 @@ services:
 #     image: php-apache
     build:
       context: /home/user/git/woodytoys/images/php-apache
-      dockerfile: Dockerfile
     depends_on:
       - mysql
     healthcheck:
