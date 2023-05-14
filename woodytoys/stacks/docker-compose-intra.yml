@@ -37,9 +37,7 @@ services:
       - /home/user/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
 # ---
   b2b:
-#     image: php-apache
-    build:
-      context: /home/user/git/woodytoys/images/php-apache
+    image: php-apache
     ports:
       - 8000:80
     depends_on:
@@ -57,9 +55,7 @@ services:
       - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
 # ---
   erp:
-#     image: php-apache
-    build:
-      context: /home/user/git/woodytoys/images/php-apache
+    image: php-apache
     depends_on:
       - mysql
     healthcheck:
