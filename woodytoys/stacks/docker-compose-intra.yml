@@ -38,14 +38,14 @@ services:
     volumes:
       - /home/user/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
 # ---
-  b2b:
-    container_name: b2b
-    image: php-apache
-    ports:
-      - '8000:80'
-    depends_on:
-      - mysql
-    restart: unless-stopped
+  # b2b:
+  #   container_name: b2b
+  #   image: php-apache
+  #   ports:
+  #     - '8000:80'
+  #   depends_on:
+  #     - mysql
+  #   restart: unless-stopped
     # healthcheck:
     #   # TODO: Add api endpoint and chck db connetion that way ?
     #   test: curl -f --fail-early http://localhost:80 || exit 1
@@ -54,8 +54,22 @@ services:
     # networks:
     #   woodytoys-intra-l3ipvlan:
     #     ipv4_address: 10.0.0.4
+    # volumes:
+    #   - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
+
+  b2b:
+    container_name: b2b
+    image: php-apache
+    depends_on:
+    - mysql
     volumes:
-      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
+    - /home/user/git/woodytoys/services/b2b/html:/var/www/html/
+    ports:
+    - 8000:80
+    networks:
+      ipvlan-l3:
+        ipv4_address: 10.0.0.4
+    restart: unless-stopped
 # ---
   erp:
     container_name: erp
@@ -76,12 +90,12 @@ services:
     volumes:
         - /home/user/git/woodytoys/services/erp/html:/var/www/html/:ro
 # ---
-  mysql:
-    container_name: mysql
-    image: mysql:latest
-    ports:
-        - "9906:3306"
-    restart: unless-stopped
+  # mysql:
+  #   container_name: mysql
+  #   image: mysql:latest
+  #   ports:
+  #       - "9906:3306"
+  #   restart: unless-stopped
     # healthcheck:
     #   test: mysqladmin ping -h localhost || exit 1
     #   interval: 1m
@@ -89,13 +103,30 @@ services:
     # networks:
     #   woodytoys-intra-l3ipvlan:
     #     ipv4_address: 10.0.0.6
-    volumes:
-      - mysql:/var/lib/mysql
-    environment:
+    # volumes:
+    #   - mysql:/var/lib/mysql
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+    #   MYSQL_DATABASE: MYSQL_DATABASE
+    #   MYSQL_USER: MYSQL_USER
+    #   MYSQL_PASSWORD: MYSQL_PASSWORD
+
+  mysql:
+  container_name: mysql
+  image: mysql
+  restart: unless-stopped
+  volumes:
+    -  mysql:/var/lib/mysql
+  environment:
       MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: MYSQL_DATABASE
       MYSQL_USER: MYSQL_USER
       MYSQL_PASSWORD: MYSQL_PASSWORD
+  ports:
+      - "9906:3306"
+  networks:
+    woodytoys-intra-l3ipvlan:
+      ipv4_address: 10.0.0.6
 # ---
   speedtest:
       container_name: openspeedtest
