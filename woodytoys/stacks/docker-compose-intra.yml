@@ -50,9 +50,9 @@ services:
     #   test: curl -f --fail-early http://localhost:80 || exit 1
     #   interval: 1m
     #   timeout: 10s
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.4
+    # networks:
+    #   woodytoys-intra-l3ipvlan:
+    #     ipv4_address: 10.0.0.4
     volumes:
       - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
     restart: unless-stopped
@@ -106,9 +106,9 @@ services:
       MYSQL_DATABASE: MYSQL_DATABASE
       MYSQL_USER: MYSQL_USER
       MYSQL_PASSWORD: MYSQL_PASSWORD
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.6
+    # networks:
+    #   woodytoys-intra-l3ipvlan:
+    #     ipv4_address: 10.0.0.6
     restart: unless-stopped
 
   # mysql:
