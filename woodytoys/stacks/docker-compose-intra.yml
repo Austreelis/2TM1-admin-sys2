@@ -42,7 +42,7 @@ services:
     container_name: b2b
     image: php-apache
     ports:
-      - 8000:80
+      - '8000:80'
     depends_on:
       - mysql
     restart: unless-stopped
@@ -71,7 +71,7 @@ services:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.5
     ports:
-        - 8001:80
+        - '8001:80'
     restart: unless-stopped
     volumes:
         - /home/user/git/woodytoys/services/erp/html:/var/www/html/:ro
