@@ -24,7 +24,9 @@ volumes:
 
 services:
   b2b:
-    image: php-apache
+#     image: php-apache
+    build: /home/user/git/woodytoys/images/php-apache
+    image: woodytoys/php-apache
     ports:
       - 8000:80
     depends_on:
@@ -64,7 +66,9 @@ services:
       - BIND9_USER=root
 
   erp:
-    image: php-apache
+#     image: php-apache
+    build: /home/user/git/woodytoys/images/php-apache
+    image: woodytoys/php-apache
     depends_on:
       - mysql
     healthcheck:
