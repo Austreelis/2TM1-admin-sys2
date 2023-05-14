@@ -2,6 +2,7 @@ version: "3.2"
 services:
 # ---
   bind9:
+    container_name: bind9
     image: ubuntu/bind9:9.18-22.04_beta
     restart: unless-stopped
     healthcheck:
@@ -24,6 +25,7 @@ services:
       - BIND9_USER=root
 # ---
   www:
+    container_name: www
     image: httpd:latest
     healthcheck:
       test: curl -f --fail-early http://localhost:80 || exit 1
@@ -37,6 +39,7 @@ services:
       - /home/user/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
 # ---
   b2b:
+    container_name: b2b
     image: php-apache
     ports:
       - 8000:80
@@ -55,6 +58,7 @@ services:
       - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
 # ---
   erp:
+    container_name: erp
     image: php-apache
     depends_on:
       - mysql
@@ -73,6 +77,7 @@ services:
         - /home/user/git/woodytoys/services/erp/html:/var/www/html/:ro
 # ---
   mysql:
+    container_name: mysql
     image: mysql:latest
     ports:
         - "9906:3306"
@@ -111,7 +116,6 @@ volumes:
 networks:
   woodytoys-intra-l3ipvlan:
     name: woodytoys-intra-l3ipvlan
-    # external: true
     driver: ipvlan
     driver_opts:
       ipvlan_mode: l3
