@@ -46,14 +46,14 @@ services:
     depends_on:
       - mysql
     restart: unless-stopped
-    healthcheck:
-      # TODO: Add api endpoint and chck db connetion that way ?
-      test: curl -f --fail-early http://localhost:80 || exit 1
-      interval: 1m
-      timeout: 10s
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.4
+    # healthcheck:
+    #   # TODO: Add api endpoint and chck db connetion that way ?
+    #   test: curl -f --fail-early http://localhost:80 || exit 1
+    #   interval: 1m
+    #   timeout: 10s
+    # networks:
+    #   woodytoys-intra-l3ipvlan:
+    #     ipv4_address: 10.0.0.4
     volumes:
       - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
 # ---
@@ -82,13 +82,13 @@ services:
     ports:
         - "9906:3306"
     restart: unless-stopped
-    healthcheck:
-      test: mysqladmin ping -h localhost || exit 1
-      interval: 1m
-      timeout: 10s
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.6
+    # healthcheck:
+    #   test: mysqladmin ping -h localhost || exit 1
+    #   interval: 1m
+    #   timeout: 10s
+    # networks:
+    #   woodytoys-intra-l3ipvlan:
+    #     ipv4_address: 10.0.0.6
     volumes:
       - mysql:/var/lib/mysql
     environment:
