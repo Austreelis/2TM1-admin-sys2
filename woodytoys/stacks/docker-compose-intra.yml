@@ -56,20 +56,6 @@ services:
     volumes:
       - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
     restart: unless-stopped
-
-  # b2b:
-  #   container_name: b2b
-  #   image: php-apache
-  #   depends_on:
-  #     - mysql
-  #   volumes:
-  #     - /home/user/git/woodytoys/services/b2b/html:/var/www/html/
-  #   ports:
-  #     - 8000:80
-  #   # networks:
-  #   #   woodytoys-intra-l3ipvlan:
-  #   #     ipv4_address: 10.0.0.4
-  #   restart: unless-stopped
 # ---
   erp:
     container_name: erp
@@ -110,25 +96,6 @@ services:
     #   woodytoys-intra-l3ipvlan:
     #     ipv4_address: 10.0.0.6
     restart: unless-stopped
-
-  # mysql:
-  #   container_name: mysql
-  #   image: mysql
-  #   restart: unless-stopped
-  #   volumes:
-  #     - /home/user/git/woodytoys/services/mysql:/var/lib/mysql
-
-  #     # - mysql:/var/lib/mysql
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-  #     MYSQL_DATABASE: MYSQL_DATABASE
-  #     MYSQL_USER: MYSQL_USER
-  #     MYSQL_PASSWORD: MYSQL_PASSWORD
-  #   ports:
-  #       - "9906:3306"
-  #   # networks:
-  #   #   woodytoys-intra-l3ipvlan:
-  #   #     ipv4_address: 10.0.0.6
 # ---
   speedtest:
       container_name: openspeedtest
