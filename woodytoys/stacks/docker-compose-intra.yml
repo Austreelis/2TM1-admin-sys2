@@ -66,9 +66,9 @@ services:
       - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
     ports:
       - 8000:80
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.4
+    # networks:
+    #   woodytoys-intra-l3ipvlan:
+    #     ipv4_address: 10.0.0.4
     restart: unless-stopped
 # ---
   erp:
@@ -124,9 +124,9 @@ services:
         MYSQL_PASSWORD: MYSQL_PASSWORD
     ports:
         - "9906:3306"
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.6
+    # networks:
+    #   woodytoys-intra-l3ipvlan:
+    #     ipv4_address: 10.0.0.6
 # ---
   speedtest:
       container_name: openspeedtest
