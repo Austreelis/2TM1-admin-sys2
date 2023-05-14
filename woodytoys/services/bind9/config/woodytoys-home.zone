@@ -14,7 +14,7 @@ $ORIGIN woodytoys.home.
 ns      IN      A       10.0.1.2
 
 
-www     IN      A       10.0.1.3
-b2b	    IN	    A	      10.0.1.4
-erp     IN      A       10.0.1.5
-mail    IN      A       10.0.1.7
+www     IN      A       10.0.0.3
+b2b     IN      A       10.0.0.4
+erp     IN      A       10.0.0.5
+mail    IN      A       10.0.0.7
