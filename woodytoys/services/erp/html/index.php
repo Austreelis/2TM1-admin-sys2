@@ -3,6 +3,12 @@
 // Connect to the database
 $db = new mysqli('mysql', 'MYSQL_USER', 'MYSQL_PASSWORD', 'MYSQL_DATABASE');
 
+$query = 'CREATE TABLE IF NOT EXISTS mytable (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    input VARCHAR(255)
+)';
+$result = $db->query($query);
+
 echo '<h1>Bienvenue sur l\'erp<h1/>';
 
 // Create a text input and a submit button
