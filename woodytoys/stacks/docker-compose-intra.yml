@@ -61,11 +61,11 @@ services:
     container_name: b2b
     image: php-apache
     depends_on:
-    - mysql
+      - mysql
     volumes:
-    - /home/user/git/woodytoys/services/b2b/html:/var/www/html/
+      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/
     ports:
-    - 8000:80
+      - 8000:80
     networks:
       ipvlan-l3:
         ipv4_address: 10.0.0.4
