@@ -96,17 +96,17 @@ services:
         MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
         MYSQL_USER: MYSQL_USER
 # ---
-  wiki:
-    build: /home/user/git/woodytoys/images/mdbook
-    image: woodytoys/mdbook
-    healthcheck:
-      test: curl -f --fail-early http://localhost:80 || exit 1
-      interval: 1m
-      timeout: 10s
-    restart: unless-stopped
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.7
+  # wiki:
+  #   build: /home/user/git/woodytoys/images/mdbook
+  #   image: woodytoys/mdbook
+  #   healthcheck:
+  #     test: curl -f --fail-early http://localhost:80 || exit 1
+  #     interval: 1m
+  #     timeout: 10s
+  #   restart: unless-stopped
+  #   networks:
+  #     woodytoys-intra-l3ipvlan:
+  #       ipv4_address: 10.0.0.7
 # ---
 volumes:
   mysql:
