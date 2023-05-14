@@ -115,7 +115,6 @@ volumes:
 networks:
   woodytoys-intra-l3ipvlan:
   name: woodytoys-intra-l3ipvlan
-    # external: true
     driver: ipvlan
     driver_opts:
       ipvlan_mode: l3
