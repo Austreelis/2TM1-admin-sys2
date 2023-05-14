@@ -63,7 +63,7 @@ services:
     depends_on:
       - mysql
     volumes:
-      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
+      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/
     ports:
       - 8000:80
     # networks:
