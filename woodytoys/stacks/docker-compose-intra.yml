@@ -26,7 +26,7 @@ services:
   b2b:
 #     image: php-apache
     build: /home/user/git/woodytoys/images/php-apache
-    image: woodytoys/php-apache
+    image: php-apache
     ports:
       - 8000:80
     depends_on:
@@ -68,7 +68,7 @@ services:
   erp:
 #     image: php-apache
     build: /home/user/git/woodytoys/images/php-apache
-    image: woodytoys/php-apache
+    image: php-apache
     depends_on:
       - mysql
     healthcheck:
