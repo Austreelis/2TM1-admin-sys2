@@ -86,9 +86,9 @@ services:
       test: mysqladmin ping -h localhost || exit 1
       interval: 1m
       timeout: 10s
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.6
+    # networks:
+    #   woodytoys-intra-l3ipvlan:
+    #     ipv4_address: 10.0.0.6
     volumes:
       - mysql:/var/lib/mysql
     environment:
