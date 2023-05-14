@@ -67,7 +67,7 @@ services:
     ports:
       - 8000:80
     networks:
-      ipvlan-l3:
+      woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.4
     restart: unless-stopped
 # ---
@@ -125,7 +125,7 @@ services:
     ports:
         - "9906:3306"
     networks:
-      ipvlan-l3:
+      woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.6
 # ---
   speedtest:
