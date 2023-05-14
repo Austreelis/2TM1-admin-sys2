@@ -80,7 +80,7 @@ networks:
     driver: ipvlan
     driver_opts:
       ipvlan_mode: l3
-      parent: wlan0
+      parent: ens4
     ipam:
       config:
         - subnet: 10.0.0.0/24
