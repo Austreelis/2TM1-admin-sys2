@@ -1,23 +1,6 @@
 version: "3.2"
-networks:
-  woodytoys-intra-l3ipvlan:
-    external: true
-    driver: ipvlan
-    driver_opts:
-      ipvlan_mode: l3
-      parent: wlan0
-    ipam:
-      config:
-        - subnet: 10.0.1.0/24
-        - subnet: 10.0.2.0/24
-        - subnet: 10.0.3.0/24
-        - subnet: 10.0.4.0/24
-        - subnet: 10.0.5.0/24
-        - subnet: 10.0.6.0/24
-        - subnet: 10.0.7.0/24
-        - subnet: 10.0.8.0/24
-
 services:
+# ---
   hangar:
     build: /home/user/git/woodytoys/images/client
     image: client
@@ -29,7 +12,7 @@ services:
     networks:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.1.2
-
+# ---
   production:
     build: /home/user/git/woodytoys/images/client
     image: client
@@ -41,7 +24,7 @@ services:
     networks:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.2.2
-
+# ---
   accounting:
     build: /home/user/git/woodytoys/images/client
     image: client
@@ -53,7 +36,7 @@ services:
     networks:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.3.2
-
+# ---
   marketing:
     build: /home/user/git/woodytoys/images/client
     image: client
@@ -65,7 +48,7 @@ services:
     networks:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.4.2
-
+# ---
   secretariat:
     build: /home/user/git/woodytoys/images/client
     image: client
@@ -77,7 +60,7 @@ services:
     networks:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.5.2
-  
+# ---
   management:
     build: /home/user/git/woodytoys/images/client
     image: client
@@ -89,4 +72,21 @@ services:
     networks:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.6.2
-
+# ---
+networks:
+  woodytoys-intra-l3ipvlan:
+    # external: true
+    driver: ipvlan
+    driver_opts:
+      ipvlan_mode: l3
+      parent: wlan0
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+        - subnet: 10.0.1.0/24
+        - subnet: 10.0.2.0/24
+        - subnet: 10.0.3.0/24
+        - subnet: 10.0.4.0/24
+        - subnet: 10.0.5.0/24
+        - subnet: 10.0.6.0/24
+        - subnet: 10.0.7.0/24
