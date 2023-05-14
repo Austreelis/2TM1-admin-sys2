@@ -2,6 +2,7 @@ version: "3.2"
 services:
 # ---
   hangar:
+    name: hangar
     image: client
     stdin_open: true
     tty: true
@@ -13,6 +14,7 @@ services:
         ipv4_address: 10.0.1.2
 # ---
   production:
+    name: production
     image: client
     stdin_open: true
     tty: true
@@ -24,6 +26,7 @@ services:
         ipv4_address: 10.0.2.2
 # ---
   accounting:
+    name: accounting
     image: client
     stdin_open: true
     tty: true
@@ -35,6 +38,7 @@ services:
         ipv4_address: 10.0.3.2
 # ---
   marketing:
+    name: marketing
     image: client
     stdin_open: true
     tty: true
@@ -46,6 +50,7 @@ services:
         ipv4_address: 10.0.4.2
 # ---
   secretariat:
+    name: secretariat
     image: client
     stdin_open: true
     tty: true
@@ -57,6 +62,7 @@ services:
         ipv4_address: 10.0.5.2
 # ---
   management:
+    name: management
     image: client
     stdin_open: true
     tty: true
