@@ -21,7 +21,7 @@ networks:
 services:
   hangar:
     build: /home/user/git/woodytoys/images/client
-    image: woodytoys/client
+    image: client
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -33,7 +33,7 @@ services:
 
   production:
     build: /home/user/git/woodytoys/images/client
-    image: woodytoys/client
+    image: client
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -45,7 +45,7 @@ services:
 
   accounting:
     build: /home/user/git/woodytoys/images/client
-    image: woodytoys/client
+    image: client
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -57,7 +57,7 @@ services:
 
   marketing:
     build: /home/user/git/woodytoys/images/client
-    image: woodytoys/client
+    image: client
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -69,7 +69,7 @@ services:
 
   secretariat:
     build: /home/user/git/woodytoys/images/client
-    image: woodytoys/client
+    image: client
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -81,7 +81,7 @@ services:
   
   management:
     build: /home/user/git/woodytoys/images/client
-    image: woodytoys/client
+    image: client
     stdin_open: true
     tty: true
     restart: unless-stopped
