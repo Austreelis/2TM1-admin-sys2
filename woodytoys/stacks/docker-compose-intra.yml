@@ -24,7 +24,7 @@ volumes:
 
 services:
   b2b:
-    image: php:8-apache
+    image: php-apache
     ports:
       - 8000:80
     depends_on:
@@ -64,7 +64,7 @@ services:
       - BIND9_USER=root
 
   erp:
-    image: php:8-apache
+    image: php-apache
     depends_on:
       - mysql
     healthcheck:
