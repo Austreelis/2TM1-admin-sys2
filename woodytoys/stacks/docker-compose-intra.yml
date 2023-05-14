@@ -106,8 +106,7 @@ services:
       restart: unless-stopped
 # ---
   wiki:
-    build: /home/user/git/woodytoys/images/mdbook
-    image: woodytoys/mdbook
+    image: mdbook
     healthcheck:
       test: curl -f --fail-early http://localhost:80 || exit 1
       interval: 1m
