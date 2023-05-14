@@ -92,17 +92,13 @@ services:
 # ---
   mysql:
     container_name: mysql
-    image: mysql:latest
+    image: mysql
     ports:
         - "9906:3306"
-    restart: unless-stopped
-    healthcheck:
-      test: mysqladmin ping -h localhost || exit 1
-      interval: 1m
-      timeout: 10s
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.6
+    # healthcheck:
+    #   test: mysqladmin ping -h localhost || exit 1
+    #   interval: 1m
+    #   timeout: 10s
     volumes:
       - mysql:/var/lib/mysql
     environment:
@@ -110,6 +106,10 @@ services:
       MYSQL_DATABASE: MYSQL_DATABASE
       MYSQL_USER: MYSQL_USER
       MYSQL_PASSWORD: MYSQL_PASSWORD
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.0.6
+    restart: unless-stopped
 
   # mysql:
   # container_name: mysql
