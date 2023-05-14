@@ -2,7 +2,7 @@ version: "3.2"
 services:
 # ---
   hangar:
-    name: hangar
+    container_name: hangar
     image: client
     stdin_open: true
     tty: true
@@ -14,7 +14,7 @@ services:
         ipv4_address: 10.0.1.2
 # ---
   production:
-    name: production
+    container_name: production
     image: client
     stdin_open: true
     tty: true
@@ -26,7 +26,7 @@ services:
         ipv4_address: 10.0.2.2
 # ---
   accounting:
-    name: accounting
+    container_name: accounting
     image: client
     stdin_open: true
     tty: true
@@ -38,7 +38,7 @@ services:
         ipv4_address: 10.0.3.2
 # ---
   marketing:
-    name: marketing
+    container_name: marketing
     image: client
     stdin_open: true
     tty: true
@@ -50,7 +50,7 @@ services:
         ipv4_address: 10.0.4.2
 # ---
   secretariat:
-    name: secretariat
+    container_name: secretariat
     image: client
     stdin_open: true
     tty: true
@@ -62,7 +62,7 @@ services:
         ipv4_address: 10.0.5.2
 # ---
   management:
-    name: management
+    container_name: management
     image: client
     stdin_open: true
     tty: true
@@ -76,7 +76,7 @@ services:
 networks:
   woodytoys-intra-l3ipvlan:
     # external: true
-    name: woodytoys-intra-l3ipvlan
+    container_name: woodytoys-intra-l3ipvlan
     driver: ipvlan
     driver_opts:
       ipvlan_mode: l3
