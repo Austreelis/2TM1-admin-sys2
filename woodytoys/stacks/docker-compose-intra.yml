@@ -97,6 +97,14 @@ services:
         MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
         MYSQL_USER: MYSQL_USER
 # ---
+  speedtest:
+      container_name: openspeedtest
+      image: openspeedtest/latest
+      ports:
+          - '3000:3000'
+          - '3001:3001'
+      restart: unless-stopped
+# ---
   # wiki:
   #   build: /home/user/git/woodytoys/images/mdbook
   #   image: woodytoys/mdbook
