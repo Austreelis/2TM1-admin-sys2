@@ -2,7 +2,7 @@ version: "3.2"
 services:
 # ---
   hangar:
-    build: /home/user/git/woodytoys/images/client
+    build: /home/habibou/git/woodytoys/images/client
     image: client
     stdin_open: true
     tty: true
@@ -14,7 +14,7 @@ services:
         ipv4_address: 10.0.1.2
 # ---
   production:
-    build: /home/user/git/woodytoys/images/client
+    build: /home/habibou/git/woodytoys/images/client
     image: client
     stdin_open: true
     tty: true
@@ -26,7 +26,7 @@ services:
         ipv4_address: 10.0.2.2
 # ---
   accounting:
-    build: /home/user/git/woodytoys/images/client
+    build: /home/habibou/git/woodytoys/images/client
     image: client
     stdin_open: true
     tty: true
@@ -38,7 +38,7 @@ services:
         ipv4_address: 10.0.3.2
 # ---
   marketing:
-    build: /home/user/git/woodytoys/images/client
+    build: /home/habibou/git/woodytoys/images/client
     image: client
     stdin_open: true
     tty: true
@@ -50,7 +50,7 @@ services:
         ipv4_address: 10.0.4.2
 # ---
   secretariat:
-    build: /home/user/git/woodytoys/images/client
+    build: /home/habibou/git/woodytoys/images/client
     image: client
     stdin_open: true
     tty: true
@@ -62,7 +62,7 @@ services:
         ipv4_address: 10.0.5.2
 # ---
   management:
-    build: /home/user/git/woodytoys/images/client
+    build: /home/habibou/git/woodytoys/images/client
     image: client
     stdin_open: true
     tty: true

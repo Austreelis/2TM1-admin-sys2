@@ -15,7 +15,7 @@ services:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.2
     volumes:
-      - /home/user/git/woodytoys/services/bind9/config:/etc/bind
+      - /home/habibou/git/woodytoys/services/bind9/config:/etc/bind
       - bind9-records:/var/lib/bind
       - type: tmpfs
         target: /var/cache/bind
@@ -34,11 +34,11 @@ services:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.3
     volumes:
-      - /home/user/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
+      - /home/habibou/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
 # ---
   b2b:
 #     image: php-apache
-    build: /home/user/git/woodytoys/images/php-apache
+    build: /home/habibou/git/woodytoys/images/php-apache
     image: php-apache
     ports:
       - 8000:80
@@ -54,11 +54,11 @@ services:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.4
     volumes:
-      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
+      - /home/habibou/git/woodytoys/services/b2b/html:/var/www/html/:ro
 # ---
   erp:
 #     image: php-apache
-    build: /home/user/git/woodytoys/images/php-apache
+    build: /home/habibou/git/woodytoys/images/php-apache
     image: php-apache
     depends_on:
       - mysql
@@ -74,7 +74,7 @@ services:
         - 8001:80
     restart: unless-stopped
     volumes:
-        - /home/user/git/woodytoys/services/erp/html:/var/www/html/:ro
+        - /home/habibou/git/woodytoys/services/erp/html:/var/www/html/:ro
 # ---
   mysql:
     image: mysql
@@ -97,7 +97,7 @@ services:
         MYSQL_USER: MYSQL_USER
 # ---
   wiki:
-    build: /home/user/git/woodytoys/images/mdbook
+    build: /home/habibou/git/woodytoys/images/mdbook
     image: woodytoys/mdbook
     healthcheck:
       test: curl -f --fail-early http://localhost:80 || exit 1
@@ -108,18 +108,31 @@ services:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.7
 # ---
+  mail:
+    image: mail
+    ports:
+        - 25:25
+        - 587:587
+        - 143:143
+        - 993:993
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.0.8
+    restart: unless-stopped
+    volumes:
+      - /home/habibou/git/woodytoys/services/mail/main.cf:/etc/postfix/main.cf
+      - /home/habibou/git/woodytoys/services/mail/dovecot.conf:/etc/dovecot/dovecot.conf
+# ---
 volumes:
   mysql:
   bind9-records:
 # ---
 networks:
   woodytoys-intra-l3ipvlan:
-  name: woodytoys-intra-l3ipvlan
-    # external: true
     driver: ipvlan
     driver_opts:
       ipvlan_mode: l3
-      parent: wlan0
+     # parent: wlan0
     ipam:
       config:
         - subnet: 10.0.0.0/24

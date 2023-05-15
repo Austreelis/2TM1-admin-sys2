@@ -9,5 +9,7 @@ RUN set -eux; \
     curl \
     bind9-dnsutils \
     iputils-ping \
-    iproute2
-
+    iproute2\
+    nano\
+    mutt\
+    telnet
