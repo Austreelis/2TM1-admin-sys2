@@ -28,6 +28,8 @@ services:
   www:
     container_name: www-extra
     image: httpd:latest
+    ports:
+      - 80:80
     healthcheck:
       test: curl -f --fail-early http://localhost:80 || exit 1
       interval: 1m
