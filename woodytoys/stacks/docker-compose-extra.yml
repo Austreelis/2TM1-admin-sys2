@@ -1,0 +1,42 @@
+version: "3.2"
+services:
+# ---
+  bind9:
+    container_name: bind9-extra
+    image: ubuntu/bind9:9.18-22.04_beta
+    restart: unless-stopped
+    healthcheck:
+      test: >-
+        dig @ns.woodytoys.home a in +noall +answer woodytoys.home
+          | grep -i 'ns\.woodytoys\.home\..\+in\s\+a' || exit 1
+        && dig @localhost any in +noall +answer || exit 1
+      interval: 1m
+      timeout: 10s
+    networks:
+      woodytoys-extra-bridge:
+        ipv4_address: 10.0.0.2
+    volumes:
+      - /home/user/git/woodytoys/services/bind9-extra/config:/etc/bind
+      - /home/user/git/woodytoys/services/bind9-extra/records:/var/lib/bind
+      - type: tmpfs
+        target: /var/cache/bind
+    environment:
+      - TZ=Europe/Brussels
+      - BIND9_USER=root
+
+
+
+networks:
+  woodytoys-extra-bridge:
+    name: woodytoys-extra-bridge
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+        - subnet: 10.0.1.0/24
+        - subnet: 10.0.2.0/24
+        - subnet: 10.0.3.0/24
+        - subnet: 10.0.4.0/24
+        - subnet: 10.0.5.0/24
+        - subnet: 10.0.6.0/24
+        - subnet: 10.0.7.0/24

@@ -2,7 +2,7 @@ version: "3.2"
 services:
 # ---
   bind9:
-    container_name: bind9
+    container_name: bind9-intra
     image: ubuntu/bind9:9.18-22.04_beta
     restart: unless-stopped
     healthcheck:
