@@ -117,6 +117,7 @@ services:
         ipv4_address: 10.0.0.7
 # ---
   mail:
+    container_name: mail
     image: mail
     ports:
         - 25:25
