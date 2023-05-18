@@ -25,6 +25,20 @@ services:
       - BIND9_USER=root
 
 
+  www:
+    container_name: www-extra
+    image: httpd:latest
+    healthcheck:
+      test: curl -f --fail-early http://localhost:80 || exit 1
+      interval: 1m
+      timeout: 10s
+    restart: unless-stopped
+    networks:
+      woodytoys-extra-bridge:
+        ipv4_address: 10.0.10.3
+    volumes:
+      - /home/user/git/woodytoys/services/www-extra/htdocs:/usr/local/apache2/htdocs:ro
+
 
 networks:
   woodytoys-extra-bridge:
