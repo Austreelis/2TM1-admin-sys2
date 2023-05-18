@@ -116,6 +116,22 @@ services:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.7
 # ---
+  mail:
+    container_name: mail
+    image: mail
+    ports:
+        - 25:25
+        - 587:587
+        - 143:143
+        - 993:993
+    networks:
+      woodytoys-intra-l3ipvlan:
+        ipv4_address: 10.0.0.8
+    restart: unless-stopped
+    volumes:
+      - /home/user/git/woodytoys/services/mail/main.cf:/etc/postfix/main.cf
+      - /home/user/git/woodytoys/services/mail/dovecot.conf:/etc/dovecot/dovecot.conf
+# ---
 volumes:
   mysql:
   bind9-records:
