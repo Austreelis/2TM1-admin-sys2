@@ -2,7 +2,7 @@ version: "3.2"
 services:
 # ---
   bind9:
-    container_name: bind9-intra
+    container_name: bind9
     image: ubuntu/bind9:9.18-22.04_beta
     restart: unless-stopped
     healthcheck:
@@ -24,50 +24,19 @@ services:
       - TZ=Europe/Brussels
       - BIND9_USER=root
 # ---
-  www:
-    container_name: www
-    image: httpd:latest
-    healthcheck:
-      test: curl -f --fail-early http://localhost:80 || exit 1
-      interval: 1m
-      timeout: 10s
-    restart: unless-stopped
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.3
-    volumes:
-      - /home/user/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
-# ---
-  b2b:
-    container_name: b2b
-    image: php-apache
-    ports:
-      - '8000:80'
-    depends_on:
-      - mysql
-    healthcheck:
-      # TODO: Add api endpoint and chck db connetion that way ?
-      test: curl -f --fail-early http://localhost:80 || exit 1
-      interval: 1m
-      timeout: 10s
-    # networks:
-    #   woodytoys-intra-l3ipvlan:
-    #     ipv4_address: 10.0.0.4
-    volumes:
-      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
-    restart: unless-stopped
-# ---
   erp:
     container_name: erp
     image: php-apache
-    depends_on:
-      - mysql
+    # depends_on:
+    #   - mysql
     healthcheck:
       # TODO: Add api endpoint and chck db connetion that way ?
       test: curl -f --fail-early http://localhost:80 || exit 1
       interval: 1m
       timeout: 10s
     networks:
+      mysql:
+      erp-intra:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.5
     ports:
@@ -76,34 +45,26 @@ services:
     volumes:
         - /home/user/git/woodytoys/services/erp/html:/var/www/html/:ro
 # ---
-  mysql:
-    container_name: mysql
-    image: mysql
-    ports:
-        - "9906:3306"
-    healthcheck:
-      test: mysqladmin ping -h localhost || exit 1
-      interval: 1m
-      timeout: 10s
-    volumes:
-      - mysql:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-      MYSQL_DATABASE: MYSQL_DATABASE
-      MYSQL_USER: MYSQL_USER
-      MYSQL_PASSWORD: MYSQL_PASSWORD
-    # networks:
-    #   woodytoys-intra-l3ipvlan:
-    #     ipv4_address: 10.0.0.6
-    restart: unless-stopped
-# ---
-  speedtest:
-      container_name: openspeedtest
-      image: openspeedtest/latest
-      ports:
-          - '3000:3000'
-          - '3001:3001'
-      restart: unless-stopped
+  # mysql:
+  #   container_name: mysql
+  #   image: mysql
+  #   ports:
+  #       - "9906:3306"
+  #   healthcheck:
+  #     test: mysqladmin ping -h localhost || exit 1
+  #     interval: 1m
+  #     timeout: 10s
+  #   volumes:
+  #     - mysql:/var/lib/mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+  #     MYSQL_DATABASE: MYSQL_DATABASE
+  #     MYSQL_USER: MYSQL_USER
+  #     MYSQL_PASSWORD: MYSQL_PASSWORD
+  #   # networks:
+  #   #   woodytoys-intra-l3ipvlan:
+  #   #     ipv4_address: 10.0.0.6
+  #   restart: unless-stopped
 # ---
   wiki:
     image: mdbook
@@ -115,28 +76,20 @@ services:
     networks:
       woodytoys-intra-l3ipvlan:
         ipv4_address: 10.0.0.7
-# ---
-  mail:
-    container_name: mail
-    image: mail
-    ports:
-        - 25:25
-        - 587:587
-        - 143:143
-        - 993:993
-    networks:
-      woodytoys-intra-l3ipvlan:
-        ipv4_address: 10.0.0.8
-    restart: unless-stopped
-    volumes:
-      - /home/user/git/woodytoys/services/mail/main.cf:/etc/postfix/main.cf
-      - /home/user/git/woodytoys/services/mail/dovecot.conf:/etc/dovecot/dovecot.conf
+
 # ---
 volumes:
   mysql:
   bind9-records:
 # ---
 networks:
+  erp-intra:
+    name: erp-intra
+
+  mysql:
+    name: mysql
+    external: true
+
   woodytoys-intra-l3ipvlan:
     name: woodytoys-intra-l3ipvlan
     driver: ipvlan
@@ -153,3 +106,4 @@ networks:
         - subnet: 10.0.5.0/24
         - subnet: 10.0.6.0/24
         - subnet: 10.0.7.0/24
+

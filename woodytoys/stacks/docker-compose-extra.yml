@@ -1,58 +1,139 @@
 version: "3.2"
 services:
+
 # ---
-  bind9:
-    container_name: bind9-extra
-    image: ubuntu/bind9:9.18-22.04_beta
-    restart: unless-stopped
-    healthcheck:
-      test: >-
-        dig @ns.woodytoys.home a in +noall +answer woodytoys.home
-          | grep -i 'ns\.woodytoys\.home\..\+in\s\+a' || exit 1
-        && dig @localhost any in +noall +answer || exit 1
-      interval: 1m
-      timeout: 10s
-    networks:
-      woodytoys-extra-bridge:
-        ipv4_address: 10.0.10.2
-    volumes:
-      - /home/user/git/woodytoys/services/bind9-extra/config:/etc/bind
-      - /home/user/git/woodytoys/services/bind9-extra/records:/var/lib/bind
-      - type: tmpfs
-        target: /var/cache/bind
-    environment:
-      - TZ=Europe/Brussels
-      - BIND9_USER=root
-
-
+  nginx-proxy-manager:
+      image: 'jc21/nginx-proxy-manager:latest'
+      container_name: nginx-proxy-manager
+      restart: unless-stopped
+      ports:
+        - '80:80' # Public HTTP Port
+        - '443:443' # Public HTTPS Port
+        - '50100:81' # Admin Web Port
+      volumes:
+        - /home/user/git/woodytoys/services/nginx-proxy-manager/data:/data
+        - /home/user/git/woodytoys/services/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      networks:
+        - nginx-proxy-manager
+        - b2b
+        - www
+        - openspeedtest
+# ---
   www:
-    container_name: www-extra
+    container_name: www
     image: httpd:latest
-    ports:
-      - 80:80
+    # ports:
+    #   - 80:80
     healthcheck:
       test: curl -f --fail-early http://localhost:80 || exit 1
       interval: 1m
       timeout: 10s
     restart: unless-stopped
     networks:
-      woodytoys-extra-bridge:
-        ipv4_address: 10.0.10.3
+      - www
     volumes:
-      - /home/user/git/woodytoys/services/www-extra/htdocs:/usr/local/apache2/htdocs:ro
+      - /home/user/git/woodytoys/services/www/htdocs:/usr/local/apache2/htdocs:ro
+# ---
+  b2b:
+    container_name: b2b
+    image: php-apache
+    # ports:
+    #   - '8000:80'
+    depends_on:
+      - mysql
+    healthcheck:
+      # TODO: Add api endpoint and chck db connetion that way ?
+      test: curl -f --fail-early http://localhost:80 || exit 1
+      interval: 1m
+      timeout: 10s
+    networks:
+      - b2b
+      - mysql-extra
+    volumes:
+      - /home/user/git/woodytoys/services/b2b/html:/var/www/html/:ro
+    restart: unless-stopped
+# ---
+  mysql:
+    container_name: mysql-extra
+    image: mysql
+    # ports:
+    #     - "9906:3306"
+    healthcheck:
+      test: mysqladmin ping -h localhost || exit 1
+      interval: 1m
+      timeout: 10s
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: MYSQL_DATABASE
+      MYSQL_USER: MYSQL_USER
+      MYSQL_PASSWORD: MYSQL_PASSWORD
+    networks:
+      - mysql-extra
+      - mysql
+    restart: unless-stopped
+# ---
+  mail:
+    container_name: mail-extra
+    image: mail
+    ports:
+        - 25:25
+        - 587:587
+        - 143:143
+        - 993:993
+    networks:
+      - mail
+    restart: unless-stopped
+    volumes:
+      - /home/user/git/woodytoys/services/mail/main.cf:/etc/postfix/main.cf
+      - /home/user/git/woodytoys/services/mail/dovecot.conf:/etc/dovecot/dovecot.conf
+# ---
+  openspeedtest:
+      container_name: openspeedtest
+      image: openspeedtest/latest
+      # ports:
+      #     - '51000:3000'
+      #     - '51001:3001'
+      networks:
+        - openspeedtest
+      restart: unless-stopped
+# ---
+  demo-tester:
+    container_name: demo-tester
+    image: client
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      - mail
+      - mysql
 
-
+# ---
+volumes:
+  mysql:
+# ---
 networks:
-  woodytoys-extra-bridge:
-    name: woodytoys-extra-bridge
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.0.10.0/24
-        # - subnet: 10.0.1.0/24
-        # - subnet: 10.0.2.0/24
-        # - subnet: 10.0.3.0/24
-        # - subnet: 10.0.4.0/24
-        # - subnet: 10.0.5.0/24
-        # - subnet: 10.0.6.0/24
-        # - subnet: 10.0.7.0/24
+
+  nginx-proxy-manager:
+    name: nginx-proxy-manager
+
+  www:
+    name: www
+
+  b2b:
+    name: b2b
+
+  mysql-extra:
+    name: mysql-extra
+
+  mail:
+    name: mail
+
+  mysql:
+    name: mysql
+    external: true
+
+  openspeedtest:
+    name: openspeedtest
+
